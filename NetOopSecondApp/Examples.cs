@@ -45,5 +45,62 @@ namespace NetOopSecondApp
             }
 
         }
+
+        public static void OverloadOperators()
+        {
+            /*
+            +, -, *, /, %
+            ++, --
+            <, >, <=, >=, ==, !=
+            &, |, ^, ~, <<, >>
+            []
+            (Type)
+            */
+
+            Fraction f = new(2, 3);
+
+            double x = 1.5 + f;
+            Console.WriteLine(x);
+
+            Money m = new(3, 20);
+            Money m2 = (Money)f;
+
+            Employee bob = new() { Name = "Bobby", Age = 25 };
+            Company yandex = new() { Title = "Yandex" };
+            yandex[0] = bob;
+            yandex[2] = new() { Name = "Sammy", Age = 31 };
+
+            for (int i = 0; i < yandex.Count; i++)
+                Console.WriteLine($"{yandex[i]?.Name}, {yandex[i]?.Age}");
+
+            Vector vector = new();
+
+            //vector.Array[0] = 0;
+            vector[0] = 0;
+
+            Employee tim = new() { Name = "Timmi", Age = 26 };
+            tim["address"] = "Moscow";
+            tim["phone"] = "+7 999 123-45-67";
+
+        }
+
+        public static void ExtensionsMethods()
+        {
+            string s = "Hello";
+            Console.WriteLine(StringAdvased.CharCount(s, 'l'));
+            Console.WriteLine(s.CharCount('l'));
+
+
+            Auto auto = new();
+            auto.Start();
+            auto.Stop();
+            auto.Refilling(20);
+        }
+
+        public static void PartialClass()
+        {
+            Window window = new();
+            window.Open();
+        }
     }
 }
