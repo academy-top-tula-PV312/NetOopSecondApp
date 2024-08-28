@@ -106,6 +106,20 @@ namespace NetOopSecondApp
 
     }
 
+    class FractionException : Exception
+    {
+        public int Value { get; }
+
+        public FractionException()
+            : base("incorrect value of denominator (is zero)"){}
+
+        public FractionException(string message, int value)
+            : base(message)
+        {
+            Value = value;
+        }
+    }
+
     class Fraction
     {
         public int Numerator { get; set; }
@@ -119,7 +133,7 @@ namespace NetOopSecondApp
                 if (value != 0)
                     Denominator = value;
                 else
-                    throw new DivideByZeroException();
+                    throw new FractionException();
             }
             get { return denominator; }
         }
